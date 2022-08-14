@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardian PC | Gaming Gear</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body class="bg-slate-600">
+    <header class="flex w-full h-[120px] justify-between p-6 bg-slate-800">
+        <figure class="flex items-center pl-[50px]">
+            <img class="w-[200px]" src="./assets/Logo.png" alt="">
+        </figure>
+        <nav class="flex items-center gap-x-14 text-[20px] text-white pr-[50px]">
+            <a href="#">Home</a>
+            <a href="#">Input Produk</a>
+            <a href="#">Tabel Produk</a>
+        </nav>
+    </header>
+    <main class="mt-[150px]">
+        <div class="flex flex-col justify-center items-center text-white" id="app">
+            <form @submit.prevent="gaminggear.isUpdate ? updateGear() : submitGear()" class="flex flex-col justify-center items-center w-[700px] h-[550px] bg-slate-800 gap-y-4 rounded-2xl">
+                <figure>
+                    <img class="w-[250px]" src="./assets/Logo.png" alt="">
+                </figure>
+                <span>Nama Produk</span>
+                <input class="w-[400px] h-[30px] border-[1px] rounded text-black" v-model="gaminggear.nama" type="text">
+                <span>Harga</span>
+                <input class="w-[400px] h-[30px] border-[1px] rounded text-black" v-model="gaminggear.price" type="number">
+                <span>Kuantitas</span>
+                <input class="w-[400px] h-[30px] border-[1px] rounded text-black" v-model="gaminggear.qty" type="number">
+                <button type="submit" class="w-[150px] h-[40px] border-[1px] rounded mt-[30px]">{{ gaminggear.isUpdate ? 'Update Produk' : 'Masukkan Produk'}}</button>
+                <span class="text-[15px] pt-[10px]">Created By Rizal Syaepulloh</span>
+            </form>
+
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-[500px]">
+				<thead class="text-xs text-gray-700 uppercase bg-gray-700 text-gray-400">
+					<tr>
+						<th scope="col" class="px-6 py-3">
+							ID
+						</th>
+						<th scope="col" class="px-6 py-3">
+							Nama Produk
+						</th>
+						<th scope="col" class="px-6 py-3">
+							Harga
+						</th>
+						<th scope="col" class="px-6 py-3">
+							Stok
+						</th>
+						<th scope="col" class="px-6 py-3">
+							Function
+						</th>
+					</tr>
+				</thead>
+				<tbody v-for="(data, id) in gaminggear.listProduk" :key="id">
+					<tr class="bg-white bg-gray-800 items-center">
+						<td class="px-6 py-4">
+							{{data.id}}
+						</td>
+						<th class="px-6 py-4 font-medium">
+							{{data.nama}}
+						</th>
+						<td class="px-6 py-4">
+							{{data.price}}
+						</td>
+						<td class="px-6 py-4">
+							{{data.qty}}
+						</td>
+						<td class="flex px-6 py-4 text-right gap-x-4">
+							<button @click="getGearById(data.id)"><img class="w-[25px]" src="./assets/icons8-update-48.png" alt=""></button>
+                            |
+                            <button @click="deleteGear(data.id)"><img class="w-[25px]" src="./assets/icons8-delete-48.png" alt=""></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="./index.js"></script>
+</body>
+</html>
