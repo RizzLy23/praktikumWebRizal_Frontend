@@ -16,13 +16,19 @@
         </figure>
         <nav class="flex items-center gap-x-14 text-[20px] text-white pr-[50px]">
             <a href="#">Home</a>
-            <a href="#">Input Produk</a>
-            <a href="#">Tabel Produk</a>
+            <a href="#form">Input Produk</a>
+            <a href="#Table">Tabel Produk</a>
         </nav>
     </header>
-    <main class="mt-[150px]">
+    <main>
         <div class="flex flex-col justify-center items-center text-white" id="app">
-            <form @submit.prevent="gaminggear.isUpdate ? updateGear() : submitGear()" class="flex flex-col justify-center items-center w-[700px] h-[550px] bg-slate-800 gap-y-4 rounded-2xl">
+            <div class="flex flex-col w-full h-[800px] justify-center items-center gap-y-8">
+                <figure>
+                    <img class="w-[450px]" src="./assets/Logo.png" alt="">
+                </figure>
+                <h1 class="text-[32px]">Durable | Eligible | Reliable</h1>
+            </div>
+            <form @submit.prevent="gaminggear.isUpdate ? updateGear() : submitGear()" id="form" class="flex flex-col justify-center items-center w-[700px] h-[550px] bg-slate-800 gap-y-4 rounded-2xl mt-[60px]">
                 <figure>
                     <img class="w-[250px]" src="./assets/Logo.png" alt="">
                 </figure>
@@ -36,8 +42,8 @@
                 <span class="text-[15px] pt-[10px]">Created By Rizal Syaepulloh</span>
             </form>
 
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-[500px]">
-				<thead class="text-xs text-gray-700 uppercase bg-gray-700 text-gray-400">
+            <table id="Table" class="w-full text-sm text-left text-gray-300 mt-[500px]">
+				<thead class="text-xs text-gray-700 uppercase bg-gray-700 text-gray-200">
 					<tr>
 						<th scope="col" class="px-6 py-3">
 							ID
